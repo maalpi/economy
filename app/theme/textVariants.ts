@@ -1,3 +1,4 @@
+
 export const textVariants = {
     defaults : {
         color: 'black',
@@ -6,5 +7,15 @@ export const textVariants = {
     title: {
         fontSize: 24,
         fontFamily: 'Poppins_700Bold',
-    }
+    },
+    button_primary: {
+        fontFamily: 'Poppins_400Regular',
+        fontSize: 16,
+        color: 'white'
+    },
+    button_secondary: {
+        fontFamily: 'Poppins_400Regular',
+        fontSize: 16,
+        color: 'black'
+    },
 }
