@@ -1,7 +1,12 @@
-import { View } from "react-native";
+import { createBox } from "@shopify/restyle";
+import { ThemePros } from "../theme";
+
+const Box = createBox<ThemePros>();
 
 export function Home() {
     return (
-        <View />
+        <Box flex={1} bg="primary_800">
+        
+        </Box>
     )
 }

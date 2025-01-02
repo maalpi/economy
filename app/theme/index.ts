@@ -1,8 +1,12 @@
 import { createTheme } from "@shopify/restyle";
+import { spacing } from './spacing';
+import { colors } from './colors';
 
 const theme = createTheme({
-    colors: {},
-    spacing: {}
+    colors,
+    spacing,
 });
 
-export { theme };
+type ThemePros = typeof theme;
+
+export { theme, ThemePros };
