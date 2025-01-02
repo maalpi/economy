@@ -36,6 +36,15 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "88e6c0de-4cf4-4473-9021-594a30e4f33c"
+      }
+    },
+    "owner": "mapeal"
   }
 }
