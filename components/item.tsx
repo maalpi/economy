@@ -1,4 +1,4 @@
-import { createBox, createText } from "@shopify/restyle";
+import { createBox, createText, useTheme } from "@shopify/restyle";
 import { ThemeProps } from "@/app/theme";
 import { MaterialIcons } from "@expo/vector-icons";
 
@@ -11,13 +11,13 @@ type Props = {
 }
 
 export function Item({title, icon}: Props) {
+    const theme = useTheme<ThemeProps>();
     return (
-        <Box>
-            <MaterialIcons name={icon} size={24}/>
-            <Text variant="title">
-                Plano Trimestral
+        <Box flexDirection="row" alignItems="center" gap="s">
+            <MaterialIcons name={icon} size={24} color={theme.colors.primary_700}/>
+            <Text >
+                {title}
             </Text>
         </Box>
-
     )
 }

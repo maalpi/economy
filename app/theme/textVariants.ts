@@ -6,6 +6,5 @@ export const textVariants = {
     title: {
         fontSize: 24,
         fontFamily: 'Poppins_700Bold',
-
     }
 }
