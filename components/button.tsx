@@ -1,7 +1,7 @@
 import { createRestyleComponent, createText, createVariant, spacing, SpacingProps, VariantProps } from "@shopify/restyle";
 import { TouchableOpacity } from "react-native";
 import { ThemeProps } from "@/app/theme";
-
+import { router,  } from "expo-router";
 
 const Text = createText<ThemeProps>();
 
@@ -14,13 +14,17 @@ type BoxCustomProps =
         createVariant({ themeKey: 'buttonVariants'})
     ])
 
+type ValidLinks = "/conta" | "/economiza";
+
 type Props = BoxCustomProps & {
     title: string,
+    link: ValidLinks 
 }
 
 export function Button(props: Props) {
+
     return (
-        <TouchableOpacity style={{ flex:1 }} >
+        <TouchableOpacity style={{ flex:1 }} onPress={() => router.push(props.link)}>
             <Box {...props}>
                 <Text variant={props.variant === 'primary' ? 'button_primary' : 'button_secondary'}>
                     {props.title}

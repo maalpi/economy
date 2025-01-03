@@ -1,11 +1,11 @@
-import { backgroundColor } from "@shopify/restyle";
-
 export const buttonVariants = {
     primary: {
-        backgroundColor: 'primary_700'
+        backgroundColor: 'primary_700',
+        height: 72,
     },
     secondary: {
-        backgroundColor: 'primary_200'
+        backgroundColor: 'primary_200',
+        height: 72,
     },
     defaults: {
         height: 56,
