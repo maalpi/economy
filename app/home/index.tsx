@@ -19,8 +19,8 @@ export function Home() {
 
             </Box>
             <Box  width='100%' height='20%'  flexDirection="column" mt="xl" gap="xl">
-                    <Button title="Preços" onPress={() => router.push('/economiza/index')} variant="secondary"/>
-                    <Button title="Conta" onPress={() => router.push('/conta/index')} variant="primary"/>
+                    <Button title="Preços" onPress={() => router.push('../economiza')} variant="secondary"/>
+                    <Button title="Conta" onPress={() => router.push('../conta')} variant="primary"/>
             </Box>
         </Box>
     )
