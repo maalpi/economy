@@ -1,10 +1,9 @@
 import { createBox, createText } from "@shopify/restyle";
 import { ThemeProps } from "../theme";
-import { Link } from "expo-router";
+
 /* components*/
-import { Item } from "@/components/item";
 import { Button } from "@/components/button";
-import { spacing } from '../theme/spacing';
+import { router } from "expo-router";
 
 const Box = createBox<ThemeProps>();
 const Text = createText<ThemeProps>();
@@ -20,8 +19,8 @@ export function Home() {
 
             </Box>
             <Box  width='100%' height='20%'  flexDirection="column" mt="xl" gap="xl">
-                    <Button title="Preços" link="/economiza" variant="secondary"/>
-                    <Button title="Conta" link="/conta" variant="primary"/>
+                    <Button title="Preços" onPress={() => router.push('/economiza/index')} variant="secondary"/>
+                    <Button title="Conta" onPress={() => router.push('/conta/index')} variant="primary"/>
             </Box>
         </Box>
     )

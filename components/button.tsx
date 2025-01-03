@@ -14,17 +14,20 @@ type BoxCustomProps =
         createVariant({ themeKey: 'buttonVariants'})
     ])
 
-type ValidLinks = "/conta" | "/economiza";
 
 type Props = BoxCustomProps & {
     title: string,
-    link: ValidLinks 
+    onPress?: () => void;
 }
 
 export function Button(props: Props) {
+    const handlePress = () => {
+        if (props.onPress) {
+            props.onPress(); 
+        }};
 
     return (
-        <TouchableOpacity style={{ flex:1 }} onPress={() => router.push(props.link)}>
+        <TouchableOpacity style={{ flex:1 }} onPress={handlePress}>
             <Box {...props}>
                 <Text variant={props.variant === 'primary' ? 'button_primary' : 'button_secondary'}>
                     {props.title}
