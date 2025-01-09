@@ -7,6 +7,12 @@ export const buttonVariants = {
         backgroundColor: 'primary_200',
         height: 72,
     },
+    modal: {
+        backgroundColor: 'primary_700',
+        height: 56,
+        width: 56,
+        borderRadius: '50%',
+    },
     defaults: {
         height: 56,
         alignItems: 'center',
