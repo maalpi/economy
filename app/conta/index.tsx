@@ -3,6 +3,7 @@ import { theme, ThemeProps } from '@/app/theme';
 import { FlatList } from "react-native";
 import { useState } from "react";
 
+import ModalT from "@/components/modal";
 import { Button } from "@/components/button";
 
 const Box = createBox<ThemeProps>();
@@ -36,7 +37,8 @@ export default function Conta() {
                 width='22.5%'
                 borderRadius={20}
             >
-                <Button icon='add-task' variant="modal" />
+                {/* <Button icon='add-task' variant="modal" /> */}
+                <ModalT></ModalT>
             </Box>
         </ThemeProvider>
     )
