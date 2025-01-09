@@ -8,6 +8,10 @@ export const textVariants = {
         fontSize: 24,
         fontFamily: 'Poppins_700Bold',
     },
+    subtitle: {
+        fontSize: 20,
+        fontFamily: 'Poppins_700Bold',
+    },
     button_primary: {
         fontFamily: 'Poppins_400Regular',
         fontSize: 16,
