@@ -1,13 +1,24 @@
 import React, {useState} from 'react';
-import {Alert, Modal, StyleSheet, Text, Pressable, View, TextInput} from 'react-native';
+import {Alert, Modal, StyleSheet, Pressable, View, TouchableWithoutFeedback} from 'react-native';
 import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
+import { TextInput } from 'react-native-paper';
 
 import { Button } from './button';
+
+import { createBox, createText, ThemeProvider } from "@shopify/restyle";
+import { theme, ThemeProps } from '@/app/theme';
+import { Poppins_500Medium } from '@expo-google-fonts/poppins';
+
+const Text = createText<ThemeProps>();
 
 const ModalT = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [text, onChangeText] = React.useState('Useless Text');
   const [number, onChangeNumber] = React.useState('');
+
+  const handleOutsideClick = () => {
+    setModalVisible(false);
+  };
 
   return (
     <SafeAreaProvider>
@@ -20,23 +31,31 @@ const ModalT = () => {
             Alert.alert('Modal has been closed.');
             setModalVisible(!modalVisible);
           }}>
+          <TouchableWithoutFeedback onPress={handleOutsideClick}>
           <View style={styles.centeredView}>
+          <TouchableWithoutFeedback>
             <View style={styles.modalView}>
-              <Text style={styles.modalText}>Adicione o nome da lista</Text>
+              <Text variant='button_secondary' style={styles.modalText}>Adicione um titulo a sua conta:</Text>
               <TextInput
                     style={styles.input}
+                    mode='outlined'
+                    label='Nome'
                     onChangeText={onChangeNumber}
                     value={number}
-                    placeholder="useless placeholder"
-                    keyboardType="numeric"
+                    placeholder="01/01 - compras"
+                    keyboardType="twitter"
                 />
-              <Pressable
-                style={[styles.button, styles.buttonClose]}
-                onPress={() => setModalVisible(!modalVisible)}>
-                <Text style={styles.textStyle}>Hide Modal</Text>
-              </Pressable>
+              <View style={styles.buttonView}>
+                <Pressable
+                  style={[styles.button, styles.buttonClose]}
+                  onPress={() => setModalVisible(!modalVisible)}>
+                  <Text style={styles.textStyle}>adicionar</Text>
+                </Pressable>
+              </View>
             </View>
+            </TouchableWithoutFeedback>
           </View>
+          </TouchableWithoutFeedback>
         </Modal>
         <Pressable
           
@@ -53,6 +72,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    elevation: 5,
+    backgroundColor: 'rgba(0,0,0,.7)'
+  },
+  buttonView: {
+    flexDirection: 'row',
+    display: 'flex',
+    padding: 5
   },
   modalView: {
     margin: 20,
@@ -70,15 +96,17 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   button: {
-    borderRadius: 20,
+    borderRadius: 10,
     padding: 10,
-    elevation: 2,
+    width: '85%',
+    elevation: 10,
   },
   buttonOpen: {
     backgroundColor: '#F194FF',
   },
   buttonClose: {
-    backgroundColor: '#2196F3',
+    backgroundColor: '#F194FF',
+
   },
   textStyle: {
     color: 'white',
@@ -86,13 +114,18 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   modalText: {
-    marginBottom: 15,
-    textAlign: 'center',
-  },input: {
+    padding: 5,
+    minWidth: '80%',
+    maxWidth: '80%',
+    textAlign: 'left',
+  },
+  input: {
     height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
+    marginBottom: 10,
+    minWidth: '80%',
+    maxWidth: '80%',
+    overflowX: 'auto',
+    fontFamily: 'Poppins_500Medium'
   },
 });
 
