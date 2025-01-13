@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import 'react-native-reanimated';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
+import { backgroundColor } from '@shopify/restyle';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -31,8 +32,8 @@ export default function RootLayout() {
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
         <Stack.Screen name="index" options={{ headerShown: false }} />
-        <Stack.Screen name="economiza/index" options={{ title: 'economiza' }} />
-        <Stack.Screen name="conta/index" options={{ title: 'conta' }} />
+        <Stack.Screen name="economiza/index" options={{ title: 'voltar' }} />
+        <Stack.Screen name="conta/index" options={{ title: 'voltar', animation: 'fade', headerTransparent: true, headerTintColor: '#000', statusBarStyle:'dark', statusBarTranslucent: true }} />
         <Stack.Screen name="+not-found" />
       </Stack>
       <StatusBar style="auto" />
