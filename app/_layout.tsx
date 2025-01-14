@@ -32,7 +32,7 @@ export default function RootLayout() {
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
         <Stack.Screen name="index" options={{ headerShown: false }} />
-        <Stack.Screen name="economiza/index" options={{ title: 'voltar', animation: 'fade', headerTransparent: true, headerTintColor: '#000', statusBarStyle:'dark', statusBarTranslucent: true }} />
+        <Stack.Screen name="economiza/index" options={{ title: 'voltar', animation: 'fade', headerTransparent: true, headerTintColor: '#fff', statusBarStyle:'dark', statusBarTranslucent: true }} />
         <Stack.Screen name="conta/index" options={{ title: 'voltar', animation: 'fade', headerTransparent: true, headerTintColor: '#000', statusBarStyle:'dark', statusBarTranslucent: true }} />
         <Stack.Screen name="+not-found" />
       </Stack>
