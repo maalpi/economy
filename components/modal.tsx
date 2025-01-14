@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Alert, Modal, StyleSheet, Pressable, View, TouchableWithoutFeedback} from 'react-native';
 import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
 import { TextInput } from 'react-native-paper';
+import { MaterialIcons } from "@expo/vector-icons";
 
 import { Button } from './button';
 
@@ -11,12 +12,29 @@ import { Poppins_500Medium } from '@expo-google-fonts/poppins';
 
 const Text = createText<ThemeProps>();
 
-const ModalT = () => {
+
+type Props = {
+  title: string;
+  placeholder: string;
+  onAdd: (produto: string) => void;
+  icon?: keyof typeof MaterialIcons.glyphMap;
+}
+
+const ModalT = (props: Props) => {
   const [modalVisible, setModalVisible] = useState(false);
-  const [text, onChangeText] = React.useState('Useless Text');
-  const [number, onChangeNumber] = React.useState('');
+  const [produto, setProduto] = React.useState('');
 
   const handleOutsideClick = () => {
+    setModalVisible(false);
+  };
+
+  const adicionarProduto = () => {
+    if (produto.trim() === '') {
+      Alert.alert('Erro', 'Por favor, insira o nome do produto.');
+      return;
+    }
+    props.onAdd(produto); // Chama o callback para adicionar o produto
+    setProduto('');
     setModalVisible(false);
   };
 
@@ -35,20 +53,20 @@ const ModalT = () => {
           <View style={styles.centeredView}>
           <TouchableWithoutFeedback>
             <View style={styles.modalView}>
-              <Text variant='button_secondary' style={styles.modalText}>Adicione um titulo a sua conta:</Text>
+              <Text variant='button_secondary' style={styles.modalText}>{`Adicione um titulo ${props.title}:`}</Text>
               <TextInput
                     style={styles.input}
                     mode='outlined'
                     label='Nome'
-                    onChangeText={onChangeNumber}
-                    value={number}
-                    placeholder="01/01 - compras"
+                    onChangeText={setProduto}
+                    value={produto}
+                    placeholder={props.placeholder}
                     keyboardType="twitter"
                 />
               <View style={styles.buttonView}>
                 <Pressable
                   style={[styles.button, styles.buttonClose]}
-                  onPress={() => setModalVisible(!modalVisible)}>
+                  onPress={adicionarProduto}>
                   <Text style={styles.textStyle}>adicionar</Text>
                 </Pressable>
               </View>
@@ -100,12 +118,13 @@ const styles = StyleSheet.create({
     padding: 10,
     width: '85%',
     elevation: 10,
+    zIndex: 99999999999999
   },
   buttonOpen: {
-    backgroundColor: '#F194FF',
+    backgroundColor: '#000',
   },
   buttonClose: {
-    backgroundColor: '#F194FF',
+    backgroundColor: '#000',
 
   },
   textStyle: {

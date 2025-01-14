@@ -38,7 +38,7 @@ export default function Conta() {
                 borderRadius={20}
             >
                 {/* <Button icon='add-task' variant="modal" /> */}
-                <ModalT></ModalT>
+                <ModalT placeholder="01/01 - compras" title="a sua conta"></ModalT>
             </Box>
         </ThemeProvider>
     )

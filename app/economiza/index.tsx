@@ -1,7 +1,8 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createBox, createText, ThemeProvider } from "@shopify/restyle";
 import { theme, ThemeProps } from '@/app/theme';
-import { FlatList } from "react-native";
-import { useState } from "react";
+import { FlatList, SafeAreaView } from "react-native";
+import { useEffect, useState } from "react";
 
 import ModalT from "@/components/modal";
 import { Button } from "@/components/button";
@@ -11,9 +12,27 @@ const Text = createText<ThemeProps>();
 
 export default function Economiza() {
     const [produtos, setProdutos] = useState<string[]>([]);
+
+    useEffect(() => {
+        const carregarProdutos = async () => {
+          const produtosSalvos = await AsyncStorage.getItem('@produtos');
+          if (produtosSalvos) {
+            setProdutos(JSON.parse(produtosSalvos));
+          }
+        };
+        carregarProdutos();
+      }, []);
+
+    const adicionarProduto = async (produto: string) => {
+        const novaLista = [...produtos, produto];
+        setProdutos(novaLista);
+        await AsyncStorage.setItem('@produtos', JSON.stringify(novaLista));
+    };
+
+
     return (
         <ThemeProvider theme={theme}>
-            <Box flex={1} bg="white" justifyContent="center" alignItems="center" p='m'>
+            <Box flex={1} bg="white" justifyContent="center" alignItems="center" pt='xxl' p='m'>
 
             <Box alignSelf="center">
                 {produtos.length === 0 ? (
@@ -38,7 +57,7 @@ export default function Economiza() {
                 borderRadius={20}
             >
                 {/* <Button icon='add-task' variant="modal" /> */}
-                <ModalT></ModalT>
+                <ModalT placeholder="água mineral" onAdd={(produto) => adicionarProduto(produto)} title="ao seu produto"></ModalT>
             </Box>
         </ThemeProvider>
     )
