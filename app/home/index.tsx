@@ -11,7 +11,7 @@ const Text = createText<ThemeProps>();
 
 export function Home() {
     return (
-        <Box flex={1} bg="primary_800" justifyContent="center" alignItems="center" p='m'>
+        <Box flex={1} bg="white" justifyContent="center" alignItems="center" p='m'>
             <Box width='100%' justifyContent="center" alignItems="center" bg="white" borderRadius={5} p='xl'>
                 <Text variant="title">
                     Economize
@@ -19,8 +19,8 @@ export function Home() {
 
             </Box>
             <Box  width='100%' height='20%'  flexDirection="column" mt="xl" gap="xl">
-                    <Button title="Preços" onPress={() => router.push('../economiza')} variant="secondary"/>
-                    <Button title="Conta" onPress={() => router.push('../conta')} variant="primary"/>
+                    <Button title="Preços" onPress={() => router.push('../economiza')} variant="primary"/>
+                    <Button title="Conta" onPress={() => router.push('../conta')} variant="secondary"/>
             </Box>
         </Box>
     )

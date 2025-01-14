@@ -13,7 +13,7 @@ export default function Conta() {
     const [contas, setContas] = useState<string[]>([]);
     return (
         <ThemeProvider theme={theme}>
-            <Box flex={1} bg="primary_200" justifyContent="center" alignItems="center" p='m'>
+            <Box flex={1} bg="white" justifyContent="center" alignItems="center" p='m'>
 
             <Box alignSelf="center">
                 {contas.length === 0 ? (
