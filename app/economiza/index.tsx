@@ -7,6 +7,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 import ModalT from "@/components/modal";
 import { Button } from "@/components/button";
+import { ButtonTwo } from '@/components/button_two';
 
 const Box = createBox<ThemeProps>();
 const Text = createText<ThemeProps>();
@@ -55,7 +56,7 @@ export default function Economiza() {
                         <FlatList
                             data={produtos}
                             keyExtractor={(item, index) => index.toString()}
-                            renderItem={({ item }) => <Button title={item} variant="primary"></Button>}
+                            renderItem={({ item }) => <ButtonTwo title={item} variant="primary"></ButtonTwo>}
                         />
                     )}
                 </Box>
