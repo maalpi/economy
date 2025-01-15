@@ -32,16 +32,22 @@ export function ButtonTwo(props: Props) {
         }};
 
     return (
-        <SafeAreaView style={{ flex:1, padding: '5%', alignContent:'flex-start' ,minWidth:320, minHeight:120, backgroundColor: '#103713', margin:'2%' , elevation: 20, borderRadius: 20 }}>
+        <SafeAreaView style={{ flex:1, padding: '5%', alignContent:'flex-start' ,minWidth:320, height: 100, backgroundColor: '#E2D8D0', margin:'2%', borderRadius: 10 }}>
             
-            <TouchableOpacity onPress={handlePress} style={{backgroundColor:'#000', width: '40%', zIndex: 9999999999}}>sdfnjsjnfnj
             {props.title ? (
-                <Text variant={props.variant === 'primary' ? 'button_primary' : 'button_secondary'}>
-                    {props.title}
-                </Text> ) : (
+                <SafeAreaView style={{display: 'flex', flexDirection: 'row', elevation: 20}}>
+                    <TouchableOpacity onPress={handlePress} style={{backgroundColor:'#000', width: '40%', height:'100%', zIndex: 9999999999}}>
+                        <Text variant={props.variant === 'primary' ? 'button_primary' : 'button_secondary'}>
+                            {props.title}
+                        </Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={{backgroundColor:'transparent', height:'100%',alignSelf:'flex-end',position:'absolute', marginLeft:'92%', zIndex: 9999999999}}>
+                        <MaterialIcons name="delete" size={24} color='red'></MaterialIcons>
+                    </TouchableOpacity>
+                </SafeAreaView>
+                 ) : (
                     <MaterialIcons name={props.icon} size={24} color={theme.colors.primary_200}/>
                 )};
-            </TouchableOpacity>
 
         </SafeAreaView>
     )

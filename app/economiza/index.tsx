@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createBox, createText, ThemeProvider } from "@shopify/restyle";
 import { theme, ThemeProps } from '@/app/theme';
-import { FlatList } from "react-native";
+import { FlatList, SafeAreaView } from "react-native";
 import { useEffect, useState } from "react";
 import { LinearGradient } from 'expo-linear-gradient';
 
@@ -32,24 +32,24 @@ export default function Economiza() {
     };
 
     return (
+        <SafeAreaView style={{flex: 1}}>
         <ThemeProvider theme={theme}>
-            <Box flex={1} bg="white" justifyContent="center" alignItems="center" >
-            <LinearGradient 
+            <Box  bg="skull_800" justifyContent="center" alignItems="center" >
+            <SafeAreaView 
             style={{
-                height: '55%', 
+                height: '28%', 
                 width: '100%', 
-                marginTop: 15, 
+                marginTop: 0, 
                 borderRadius: 5,
                 alignItems:"flex-start",
-                justifyContent:"flex-end"
+                justifyContent:"flex-end",
+                
             }}
-                start={{x:0,y:1}}
-                end={{x:1,y:0}}
-                colors={['#628B35','#103713']}>
+                >
                     <Text variant="title2" color="white" p='m'>Adicione ou selecione um produto:</Text>
-            </LinearGradient>
+            </SafeAreaView>
 
-                <Box alignSelf="center">
+                <Box alignSelf="center" bg='white' borderRadius={20} mt='s' mb='xl' height={480}>
                     {produtos.length === 0 ? (
                         <Text variant="subtitle">nenhum produto adicionado</Text>
                     ) : (
@@ -61,18 +61,23 @@ export default function Economiza() {
                     )}
                 </Box>
             </Box>
+            
 
             <Box 
+                
                 zIndex={999999}
                 alignSelf="flex-end"
                 justifyContent="flex-end"
-                p="s"
-                bottom="12%"
+                p="m"
+                bottom="16%"
+                right='1.5%'
                 width="22.5%"
                 borderRadius={20}
             >
                 <ModalT placeholder="água mineral" onAdd={(produto) => adicionarProduto(produto)} title="ao seu produto"></ModalT>
             </Box>
+            
         </ThemeProvider>
+        </SafeAreaView>
     );
 }
