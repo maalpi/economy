@@ -3,12 +3,13 @@ import {Alert, Modal, StyleSheet, Pressable, View, TouchableWithoutFeedback} fro
 import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
 import { TextInput } from 'react-native-paper';
 import { MaterialIcons } from "@expo/vector-icons";
+import { useProdutos } from '@/hooks/useProdutos';
 
 import { Button } from './button';
 
-import { createBox, createText, ThemeProvider } from "@shopify/restyle";
-import { theme, ThemeProps } from '@/app/theme';
-import { Poppins_500Medium } from '@expo-google-fonts/poppins';
+import { createText } from "@shopify/restyle";
+import { ThemeProps } from '@/app/theme';
+
 
 const Text = createText<ThemeProps>();
 
@@ -16,26 +17,46 @@ const Text = createText<ThemeProps>();
 type Props = {
   title: string;
   placeholder: string;
-  onAdd: (produto: string) => void;
+  onAdd: (produto: {
+    nome: string;
+    descricao: string;
+    cidade: string;
+    data_criacao: string;
+  }) => void;
   icon?: keyof typeof MaterialIcons.glyphMap;
 }
 
 const ModalT = (props: Props) => {
   const [modalVisible, setModalVisible] = useState(false);
-  const [produto, setProduto] = React.useState('');
+  const [nome, setNome] = React.useState('');
+  const [descricao, setDescricao] = useState('');
+  const [cidade, setCidade] = useState('');
 
   const handleOutsideClick = () => {
     setModalVisible(false);
   };
 
   const adicionarProduto = () => {
-    if (produto.trim() === '') {
-      Alert.alert('Erro', 'Por favor, insira o nome do produto.');
+    if (!nome.trim() || !descricao.trim() || !cidade.trim()) {
+      Alert.alert('Erro', 'Por favor, preencha todos os campos.');
       return;
     }
-    props.onAdd(produto); // Chama o callback para adicionar o produto
-    setProduto('');
-    setModalVisible(false);
+
+    try {
+      props.onAdd({
+        nome,
+        descricao,
+        cidade,
+        data_criacao: new Date().toISOString(),
+      });
+      setNome('');
+      setDescricao('');
+      setCidade('');
+      setModalVisible(false);
+      Alert.alert('Sucesso', 'Produto adicionado com sucesso!');
+    } catch (error) {
+      Alert.alert('Erro', 'Não foi possível adicionar o produto.');
+    }
   };
 
   return (
@@ -58,11 +79,32 @@ const ModalT = (props: Props) => {
                     style={styles.input}
                     mode='outlined'
                     label='Nome'
-                    onChangeText={setProduto}
-                    value={produto}
+                    onChangeText={setNome}
+                    value={nome}
                     placeholder={props.placeholder}
                     keyboardType="twitter"
                 />
+              
+              <TextInput
+                    style={styles.input}
+                    mode="outlined"
+                    label="Descrição"
+                    onChangeText={setDescricao}
+                    value={descricao}
+                    placeholder="Insira uma descrição"
+                    keyboardType="default"
+                  />
+
+              <TextInput
+                    style={styles.input}
+                    mode="outlined"
+                    label="Cidade"
+                    onChangeText={setCidade}
+                    value={cidade}
+                    placeholder="Insira a cidade"
+                    keyboardType="default"
+                  />
+
               <View style={styles.buttonView}>
                 <Pressable
                   style={[styles.button, styles.buttonClose]}

@@ -3,33 +3,18 @@ import { createBox, createText, ThemeProvider } from "@shopify/restyle";
 import { theme, ThemeProps } from '@/app/theme';
 import { FlatList, SafeAreaView } from "react-native";
 import { useEffect, useState } from "react";
-import { LinearGradient } from 'expo-linear-gradient';
+import { useProdutos } from '../../hooks/useProdutos';
 
 import ModalT from "@/components/modal";
 import { Button } from "@/components/button";
 import { ButtonTwo } from '@/components/button_two';
 
+
 const Box = createBox<ThemeProps>();
 const Text = createText<ThemeProps>();
 
 export default function Economiza() {
-    const [produtos, setProdutos] = useState<string[]>([]);
-
-    useEffect(() => {
-        const carregarProdutos = async () => {
-          const produtosSalvos = await AsyncStorage.getItem('@produtos');
-          if (produtosSalvos) {
-            setProdutos(JSON.parse(produtosSalvos));
-          }
-        };
-        carregarProdutos();
-    }, []);
-
-    const adicionarProduto = async (produto: string) => {
-        const novaLista = [...produtos, produto];
-        setProdutos(novaLista);
-        await AsyncStorage.setItem('@produtos', JSON.stringify(novaLista));
-    };
+    const { produtos, adicionarProduto } = useProdutos();
 
     return (
         <SafeAreaView style={{flex: 1}}>
@@ -56,7 +41,7 @@ export default function Economiza() {
                         <FlatList
                             data={produtos}
                             keyExtractor={(item, index) => index.toString()}
-                            renderItem={({ item }) => <ButtonTwo title={item} variant="primary"></ButtonTwo>}
+                            renderItem={({ item }) => <ButtonTwo title={item.nome} variant="primary"></ButtonTwo>}
                         />
                     )}
                 </Box>
@@ -74,7 +59,16 @@ export default function Economiza() {
                 width="22.5%"
                 borderRadius={20}
             >
-                <ModalT placeholder="água mineral" onAdd={(produto) => adicionarProduto(produto)} title="ao seu produto"></ModalT>
+                <ModalT placeholder="água mineral" 
+                        onAdd={({ nome, descricao, cidade, data_criacao }) => 
+                            adicionarProduto({
+                              nome,
+                              descricao,
+                              cidade,
+                              data_criacao,
+                            })
+                          }
+                        title="ao seu produto"></ModalT>
             </Box>
             
         </ThemeProvider>
