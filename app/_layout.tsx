@@ -7,7 +7,8 @@ import { useEffect } from 'react';
 import 'react-native-reanimated';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
-import { backgroundColor } from '@shopify/restyle';
+import { SQLiteProvider } from 'expo-sqlite';
+import { initializeDatabase } from '@/services/database';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -29,14 +30,16 @@ export default function RootLayout() {
   }
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="index" options={{ headerShown: false }} />
-        <Stack.Screen name="economiza/index" options={{ title: 'voltar', animation: 'fade', headerTransparent: true, headerTintColor: '#fff', statusBarStyle:'dark', statusBarTranslucent: true }} />
-        <Stack.Screen name="conta/index" options={{ title: 'voltar', animation: 'fade', headerTransparent: true, headerTintColor: '#000', statusBarStyle:'dark', statusBarTranslucent: true }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      <StatusBar style="dark" />
-    </ThemeProvider>
+    <SQLiteProvider databaseName='economy.db' onInit={initializeDatabase}>
+      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+        <Stack>
+          <Stack.Screen name="index" options={{ headerShown: false }} />
+          <Stack.Screen name="economiza/index" options={{ title: 'voltar', animation: 'fade', headerTransparent: true, headerTintColor: '#fff', statusBarStyle:'dark', statusBarTranslucent: true }} />
+          <Stack.Screen name="conta/index" options={{ title: 'voltar', animation: 'fade', headerTransparent: true, headerTintColor: '#000', statusBarStyle:'dark', statusBarTranslucent: true }} />
+          <Stack.Screen name="+not-found" />
+        </Stack>
+        <StatusBar style="dark" />
+      </ThemeProvider>
+    </SQLiteProvider>
   );
 }
