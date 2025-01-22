@@ -3,7 +3,9 @@ import { createBox, createText, ThemeProvider } from "@shopify/restyle";
 import { theme, ThemeProps } from '@/app/theme';
 import { FlatList, SafeAreaView } from "react-native";
 import { useEffect, useState } from "react";
-import { useProdutos } from '../../hooks/useProdutos';
+import { useProductDatabase } from '../../hooks/useProdutos';
+
+
 
 import ModalT from "@/components/modal";
 import { Button } from "@/components/button";
@@ -14,8 +16,12 @@ const Box = createBox<ThemeProps>();
 const Text = createText<ThemeProps>();
 
 export default function Economiza() {
-    const { produtos, adicionarProduto } = useProdutos();
+    const productDatabase = useProductDatabase();
 
+    function create(){
+        productDatabase.create();
+    }
+    
     return (
         <SafeAreaView style={{flex: 1}}>
         <ThemeProvider theme={theme}>
