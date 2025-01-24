@@ -1,3 +1,4 @@
+// database.ts
 import { type SQLiteDatabase} from 'expo-sqlite';
 
 export async function initializeDatabase(database:SQLiteDatabase) {
@@ -8,6 +9,7 @@ export async function initializeDatabase(database:SQLiteDatabase) {
     data_criacao TEXT NOT NULL,
     descricao TEXT,
     cidade TEXT
+  );
   `)
 
   await database.execAsync(`
@@ -17,5 +19,6 @@ export async function initializeDatabase(database:SQLiteDatabase) {
     quantidade REAL NOT NULL,
     preco REAL NOT NULL,
     FOREIGN KEY (produto_id) REFERENCES produtos(id)
+    );
   `)
 }

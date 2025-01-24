@@ -1,11 +1,9 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
+// index.tsx
 import { createBox, createText, ThemeProvider } from "@shopify/restyle";
 import { theme, ThemeProps } from '@/app/theme';
 import { FlatList, SafeAreaView } from "react-native";
 import { useEffect, useState } from "react";
-import { useProductDatabase } from '../../hooks/useProdutos';
-
-
+import { ProductDatabase, useProductDatabase } from '../../hooks/useProdutos';
 
 import ModalT from "@/components/modal";
 import { Button } from "@/components/button";
@@ -17,10 +15,37 @@ const Text = createText<ThemeProps>();
 
 export default function Economiza() {
     const productDatabase = useProductDatabase();
+    const [produtos, setProdutos] = useState<ProductDatabase[]>([]);
 
-    function create(){
-        productDatabase.create();
+    // Função para criar um novo produto
+    async function adicionarProduto({ nome, descricao, cidade, data_criacao }: Omit<ProductDatabase, "id">) {
+        try {
+        await productDatabase.create({
+            nome,
+            descricao,
+            cidade,
+            data_criacao,
+        });
+        carregarProdutos(); // Atualiza a lista após adicionar
+        } catch (error) {
+        console.error('Erro ao adicionar produto:', error);
+        }
     }
+
+    // Função para carregar os produtos do banco
+    async function carregarProdutos() {
+        try {
+        const resultado = await productDatabase.read(); // Nova função `read` no hook
+        setProdutos(resultado); // Atualiza o estado com os produtos
+        } catch (error) {
+        console.error('Erro ao carregar produtos:', error);
+        }
+    }
+
+    // Carregar os produtos na inicialização do componente
+    useEffect(() => {
+        carregarProdutos();
+    }, []);
     
     return (
         <SafeAreaView style={{flex: 1}}>

@@ -3,7 +3,6 @@ import {Alert, Modal, StyleSheet, Pressable, View, TouchableWithoutFeedback} fro
 import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
 import { TextInput } from 'react-native-paper';
 import { MaterialIcons } from "@expo/vector-icons";
-import { useProdutos } from '@/hooks/useProdutos';
 
 import { Button } from './button';
 
