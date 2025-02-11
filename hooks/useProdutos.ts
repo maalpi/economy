@@ -14,7 +14,7 @@ export function useProductDatabase(){
 
   async function create( data: Omit<ProductDatabase, 'id'> ) {
     const statement = await database.prepareAsync(
-      "INSERT INTO products (nome, data_criacao, descricao, cidade) VALUES (?, ?, ?, ?)"
+      "INSERT INTO produtos (nome, data_criacao, descricao, cidade) VALUES (?, ?, ?, ?)"
     )
     try{
       const result = await statement.executeAsync([
@@ -30,7 +30,7 @@ export function useProductDatabase(){
 
   async function read() {
     try {
-      const query = "SELECT * FROM products"
+      const query = "SELECT * FROM produtos"
 
       const response = await database.getAllAsync<ProductDatabase>(
         query

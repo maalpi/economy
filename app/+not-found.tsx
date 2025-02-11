@@ -8,7 +8,7 @@ import { Text } from 'react-native-paper';
 export default function NotFoundScreen() {
   return (
     <>
-      <Text>aer</Text>
+      <Text>Pagina not found</Text>
     </>
   );
 }

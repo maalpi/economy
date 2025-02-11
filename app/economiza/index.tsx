@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import { ProductDatabase, useProductDatabase } from '../../hooks/useProdutos';
 
 import ModalT from "@/components/modal";
-import { Button } from "@/components/button";
 import { ButtonTwo } from '@/components/button_two';
 
 

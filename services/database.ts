@@ -11,14 +11,4 @@ export async function initializeDatabase(database:SQLiteDatabase) {
     cidade TEXT
   );
   `)
-
-  await database.execAsync(`
-    CREATE TABLE IF NOT EXISTS detalhes_produtos (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    produto_id INTEGER NOT NULL,
-    quantidade REAL NOT NULL,
-    preco REAL NOT NULL,
-    FOREIGN KEY (produto_id) REFERENCES produtos(id)
-    );
-  `)
 }
