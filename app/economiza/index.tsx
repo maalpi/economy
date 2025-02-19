@@ -46,6 +46,13 @@ export default function Economiza() {
         carregarProdutos();
     }, []);
     
+    const formatarData = (data: string): string => {
+        return new Intl.DateTimeFormat("pt-BR", {
+          day: "2-digit",
+          month: "2-digit",
+          year: "numeric",
+        }).format(new Date(data));
+      };
     return (
         <SafeAreaView style={{flex: 1}}>
         <ThemeProvider theme={theme}>
@@ -71,7 +78,13 @@ export default function Economiza() {
                         <FlatList
                             data={produtos}
                             keyExtractor={(item, index) => index.toString()}
-                            renderItem={({ item }) => <ButtonTwo title={item.nome} cidade={item.cidade} descricao={item.descricao} data={item.data_criacao} variant="primary"></ButtonTwo>}
+                            renderItem={({ item }) => <ButtonTwo title={item.nome} 
+                                                                 cidade={item.cidade} 
+                                                                 descricao={item.descricao} 
+                                                                 data={formatarData(item.data_criacao)} 
+                                                                 variant="primary">
+                                                                
+                                                      </ButtonTwo>}
                         />
                     )}
                 </Box>
