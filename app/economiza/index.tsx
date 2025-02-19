@@ -82,8 +82,7 @@ export default function Economiza() {
                                                                  cidade={item.cidade} 
                                                                  descricao={item.descricao} 
                                                                  data={formatarData(item.data_criacao)} 
-                                                                 variant="primary">
-                                                                
+                                                                 variant="primary">                                                              
                                                       </ButtonTwo>}
                         />
                     )}

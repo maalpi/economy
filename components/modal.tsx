@@ -80,6 +80,7 @@ const ModalT = (props: Props) => {
                     label='Nome'
                     onChangeText={setNome}
                     value={nome}
+                    maxLength={22}
                     placeholder={props.placeholder}
                     keyboardType="twitter"
                 />
@@ -88,6 +89,7 @@ const ModalT = (props: Props) => {
                     style={styles.input}
                     mode="outlined"
                     label="Marca"
+                    maxLength={22}
                     onChangeText={setDescricao}
                     value={descricao}
                     placeholder="Adicione a marca"
@@ -100,6 +102,7 @@ const ModalT = (props: Props) => {
                     label="Local"
                     onChangeText={setCidade}
                     value={cidade}
+                    maxLength={23}
                     placeholder="Insira o local"
                     keyboardType="default"
                   />

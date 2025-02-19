@@ -44,18 +44,18 @@ export function ButtonTwo(props: Props) {
             
             {props.title ? (
                 <SafeAreaView style={{display: 'flex', flexDirection: 'row', elevation: 20}}>
-                        <SafeAreaView style={{flexDirection: 'column'}}>
                             <SafeAreaView style={{flexDirection: 'row'}}>
-                                <Text style={{fontSize:20, color:'black'}} variant={props.variant === 'primary' ? 'button_primary' : 'button_secondary'}>
-                                    {props.title}
-                                </Text>
-                                <Text style={{fontSize:20}}> - </Text>
-                                <Text style={{fontSize:20}}>{props.descricao}</Text>
-                            </SafeAreaView>
-                            <Text style={{fontSize:10, marginTop: '-5%'}}>{props.cidade}</Text>
-                            <Text style={{fontSize:10, marginTop: '-5%'}}>{props.data}</Text>
-                            
-                        </SafeAreaView>
+                                <SafeAreaView style={{flexDirection: 'column'}}>
+                                    <Text style={{fontSize:20, color:'black'}} variant={props.variant === 'primary' ? 'button_primary' : 'button_secondary'}>
+                                        {props.title}, {props.descricao}
+                                    </Text>
+                                    <Text style={{fontSize:10, marginTop: '-4%', maxWidth: 100}}>{props.cidade}</Text>
+                                    <Text style={{fontSize:10, marginTop: '-2%'}}>{props.data}</Text>
+                                    </SafeAreaView>
+
+                                {/* <Text style={{fontSize:20}}> - </Text>
+                                <Text style={{fontSize:20, maxWidth:200}}>{props.descricao}</Text> */}
+                            </SafeAreaView>    
 
                     <TouchableOpacity onPress={editPress} style={{backgroundColor:'transparent', height:'100%',alignSelf:'flex-end',position:'absolute', marginLeft:'92%', zIndex: 9999999999}}>
                         <MaterialIcons name="more-vert" size={24} color='black'></MaterialIcons>
