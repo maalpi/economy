@@ -4,6 +4,7 @@ import { ThemeProps } from "@/app/theme";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Menu, Divider, IconButton } from 'react-native-paper';
 import { Button } from "react-native-paper";
+import { Arimo_500Medium } from "@expo-google-fonts/arimo";
 
 const Text = createText<ThemeProps>();
 
@@ -40,13 +41,13 @@ export function ButtonTwo(props: Props) {
     
 
     return (
-        <TouchableOpacity onPress={handlePress} style={{ flex:1, padding: '5%', alignContent:'flex-start' ,minWidth:320, height: 100, backgroundColor: '#E2D8D0', margin:'2%', borderRadius: 10 }}>
+        <TouchableOpacity onPress={handlePress} style={{ alignSelf:'center', flex:1, padding: '5%', alignContent:'center' ,minWidth:310, height: 100, backgroundColor: '#fff', margin:'2%', borderRadius: 10 }}>
             
             {props.title ? (
                 <SafeAreaView style={{display: 'flex', flexDirection: 'row', elevation: 20}}>
                             <SafeAreaView style={{flexDirection: 'row'}}>
                                 <SafeAreaView style={{flexDirection: 'column'}}>
-                                    <Text style={{fontSize:20, color:'black'}} variant={props.variant === 'primary' ? 'button_primary' : 'button_secondary'}>
+                                    <Text style={{fontSize:20, color:'black',  maxWidth: 280, fontFamily: 'Arimo_500Medium', alignSelf:'center'}} variant={props.variant === 'primary' ? 'button_primary' : 'button_secondary'}>
                                         {props.title}, {props.descricao}
                                     </Text>
                                     <Text style={{fontSize:10, marginTop: '-4%', maxWidth: 100}}>{props.cidade}</Text>

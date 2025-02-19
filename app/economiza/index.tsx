@@ -71,13 +71,14 @@ export default function Economiza() {
                     <Text variant="title2" color="white" p='m'>Adicione ou selecione um produto:</Text>
             </SafeAreaView>
 
-                <Box alignSelf="center" bg='white' borderRadius={20} mt='s' mb='xl' height={480}>
+                <Box alignSelf="center" bg='primary_800' borderRadius={20} mt='s' mb='xl' height={480}>
                     {produtos.length === 0 ? (
                         <Text variant="subtitle">nenhum produto adicionado</Text>
                     ) : (
                         <FlatList
                             data={produtos}
                             keyExtractor={(item, index) => index.toString()}
+                            style={{marginTop:'2%',minWidth:330,}}
                             renderItem={({ item }) => <ButtonTwo title={item.nome} 
                                                                  cidade={item.cidade} 
                                                                  descricao={item.descricao} 
