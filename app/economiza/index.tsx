@@ -82,7 +82,7 @@ export default function Economiza() {
                             renderItem={({ item }) => <ButtonTwo title={item.nome} 
                                                                  cidade={item.cidade} 
                                                                  descricao={item.descricao} 
-                                                                 data={formatarData(item.data_criacao)} 
+                                                                 data={item.data_criacao} 
                                                                  variant="primary">                                                              
                                                       </ButtonTwo>}
                         />
