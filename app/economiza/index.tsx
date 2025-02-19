@@ -71,7 +71,7 @@ export default function Economiza() {
                         <FlatList
                             data={produtos}
                             keyExtractor={(item, index) => index.toString()}
-                            renderItem={({ item }) => <ButtonTwo title={item.nome} variant="primary"></ButtonTwo>}
+                            renderItem={({ item }) => <ButtonTwo title={item.nome} cidade={item.cidade} descricao={item.descricao} data={item.data_criacao} variant="primary"></ButtonTwo>}
                         />
                     )}
                 </Box>
@@ -89,7 +89,7 @@ export default function Economiza() {
                 width="22.5%"
                 borderRadius={20}
             >
-                <ModalT placeholder="água mineral" 
+                <ModalT placeholder="1kg arroz" 
                         onAdd={({ nome, descricao, cidade, data_criacao }) => 
                             adicionarProduto({
                               nome,

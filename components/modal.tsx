@@ -87,20 +87,20 @@ const ModalT = (props: Props) => {
               <TextInput
                     style={styles.input}
                     mode="outlined"
-                    label="Descrição"
+                    label="Marca"
                     onChangeText={setDescricao}
                     value={descricao}
-                    placeholder="Insira uma descrição"
+                    placeholder="Adicione a marca"
                     keyboardType="default"
                   />
 
               <TextInput
                     style={styles.input}
                     mode="outlined"
-                    label="Cidade"
+                    label="Local"
                     onChangeText={setCidade}
                     value={cidade}
-                    placeholder="Insira a cidade"
+                    placeholder="Insira o local"
                     keyboardType="default"
                   />
 
