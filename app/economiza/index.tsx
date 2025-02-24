@@ -71,7 +71,7 @@ export default function Economiza() {
                     <Text variant="title2" color="white" p='m'>Adicione ou selecione um produto:</Text>
             </SafeAreaView>
 
-                <Box alignSelf="center" bg='primary_800' borderRadius={20} mt='s' mb='xl' height={480}>
+                <Box alignSelf="center" mt='s' mb='xl' height={480}>
                     {produtos.length === 0 ? (
                         <Text variant="subtitle">nenhum produto adicionado</Text>
                     ) : (

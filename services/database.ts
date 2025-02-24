@@ -10,5 +10,15 @@ export async function initializeDatabase(database:SQLiteDatabase) {
     descricao TEXT,
     cidade TEXT
   );
-  `)
+  `);
+
+  await database.execAsync(`
+    CREATE TABLE IF NOT EXISTS contas (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT NOT NULL,
+    data_criacao TEXT NOT NULL,
+    descricao TEXT,
+    cidade TEXT
+  );
+  `);
 }
