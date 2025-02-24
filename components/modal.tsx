@@ -23,7 +23,7 @@ type Props = {
     data_criacao: string;
   }) => void;
   icon?: keyof typeof MaterialIcons.glyphMap;
-  buttonVariant: string;
+  buttonVariant: "primary" | "secondary" | "modalProduto" | "modalConta";
 }
 
 const ModalT = (props: Props) => {
