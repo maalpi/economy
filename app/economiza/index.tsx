@@ -111,7 +111,9 @@ export default function Economiza() {
                               data_criacao,
                             })
                           }
-                        title="ao seu produto"></ModalT>
+                        title="ao seu produto"
+                        buttonVariant="modalProduto"
+                        ></ModalT>
             </Box>
             
         </ThemeProvider>

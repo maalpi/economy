@@ -1,7 +1,7 @@
 // useProdutos.ts
 import { useSQLiteContext } from "expo-sqlite";
 
-export type ProductDatabase = {
+export type ContaDatabase = {
   id: number;
   nome: string;
   data_criacao: string;
@@ -9,10 +9,10 @@ export type ProductDatabase = {
   cidade: string; 
 }
 
-export function useProductDatabase(){
+export function useContaDatabase(){
   const database = useSQLiteContext()
 
-  async function create( data: Omit<ProductDatabase, 'id'> ) {
+  async function create( data: Omit<ContaDatabase, 'id'> ) {
     const statement = await database.prepareAsync(
       "INSERT INTO contas (nome, data_criacao, descricao, cidade) VALUES (?, ?, ?, ?)"
     )
@@ -32,7 +32,7 @@ export function useProductDatabase(){
     try {
       const query = "SELECT * FROM contas"
 
-      const response = await database.getAllAsync<ProductDatabase>(
+      const response = await database.getAllAsync<ContaDatabase>(
         query
       )
 

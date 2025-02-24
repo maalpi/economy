@@ -6,7 +6,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 
 import { Button } from './button';
 
-import { createText } from "@shopify/restyle";
+import { backgroundColor, createText } from "@shopify/restyle";
 import { ThemeProps } from '@/app/theme';
 
 
@@ -23,6 +23,7 @@ type Props = {
     data_criacao: string;
   }) => void;
   icon?: keyof typeof MaterialIcons.glyphMap;
+  buttonVariant: string;
 }
 
 const ModalT = (props: Props) => {
@@ -122,7 +123,7 @@ const ModalT = (props: Props) => {
         <Pressable
           
           onPress={() => setModalVisible(true)}>
-          <Button icon='add-task' variant="modal" onPress={() => setModalVisible(true)} /> 
+          <Button icon='add-task' variant={props.buttonVariant} onPress={() => setModalVisible(true)} /> 
         </Pressable>
       </SafeAreaView>
     </SafeAreaProvider>

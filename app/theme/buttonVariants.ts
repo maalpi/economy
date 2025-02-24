@@ -7,8 +7,14 @@ export const buttonVariants = {
         backgroundColor: 'primary_700',
         height: 72,
     },
-    modal: {
+    modalProduto: {
         backgroundColor: 'primary_700',
+        height: 56,
+        width: 56,
+        borderRadius: '50%',
+    },
+    modalConta: {
+        backgroundColor: 'gray',
         height: 56,
         width: 56,
         borderRadius: '50%',
