@@ -1,11 +1,15 @@
 export const buttonVariants = {
     primary: {
         backgroundColor: 'primary_800',
-        height: 72,
+        height: 58,
+        width: 250,
+
     },
     secondary: {
         backgroundColor: 'primary_700',
-        height: 72,
+        height: 58,
+        width: 250,
+        
     },
     modalProduto: {
         backgroundColor: 'primary_700',
